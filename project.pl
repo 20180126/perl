@@ -45,13 +45,14 @@ for(my $l = 0; $l < $length; $l++){
     print "</div>";
 }
 
+# UTF-8で出力
 my $cgi = new CGI;
 $cgi->charset('utf-8');
 
 for(my $i = 0; $i < $length; $i++){
 
     print "<div class='hidden_source' id='source_".@file[$i]."'>";
-    open(DATAFILE,@file[$i]) or die("Error:$!");
+    open(DATAFILE, @file[$i]) or die("Error:$!");
     while(my $line = <DATAFILE>){
         print $cgi->escapeHTML($line);
     }
